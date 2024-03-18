@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageViewImage"
+                android:id="@+id/imgCandidate"
                 android:layout_width="149dp"
                 android:layout_height="138dp"
                 android:layout_marginStart="37dp"

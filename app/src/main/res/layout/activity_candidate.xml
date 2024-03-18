@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/back" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMain"
+        android:id="@+id/recyclerViewCandidate"
         android:layout_width="405dp"
         android:layout_height="665dp"
         android:layout_marginTop="1dp"
