@@ -7,9 +7,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewCard"
-        android:layout_width="410dp"
-        android:layout_height="258dp"
-        android:layout_marginEnd="1dp"
+        android:layout_width="400dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +25,12 @@
 
             <ImageView
                 android:id="@+id/imgCandidate"
-                android:layout_width="149dp"
-                android:layout_height="138dp"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="37dp"
-                android:layout_marginBottom="60dp"
+                android:layout_width="167dp"
+                android:layout_height="177dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="42dp"
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/txtName"
@@ -35,15 +39,16 @@
 
             <TextView
                 android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="107dp"
-                android:layout_marginEnd="49dp"
-                android:layout_marginBottom="106dp"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/cambay"
                 android:text="TextView"
-                android:textSize="34sp"
+                android:textAlignment="center"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgCandidate"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
