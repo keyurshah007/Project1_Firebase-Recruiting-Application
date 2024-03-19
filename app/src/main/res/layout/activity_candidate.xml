@@ -13,12 +13,12 @@
         android:layout_height="57dp"
         android:layout_marginTop="7dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back1"
+        app:layout_constraintStart_toEndOf="@+id/backCandidate"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logohori" />
 
     <ImageView
-        android:id="@+id/back1"
+        android:id="@+id/backCandidate"
         android:layout_width="37dp"
         android:layout_height="32dp"
         android:layout_marginStart="5dp"

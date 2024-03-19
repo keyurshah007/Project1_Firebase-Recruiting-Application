@@ -1,5 +1,6 @@
 package com.example.project_part1
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -14,9 +15,13 @@ import com.google.firebase.database.*
 
 class DetailActivity : AppCompatActivity() {
 
+
     private lateinit var candidateId: String
     private lateinit var emailTextView: TextView
+
+
     private lateinit var phoneNumberTextView: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,14 @@ class DetailActivity : AppCompatActivity() {
         btnDetail.setOnClickListener {
             addFriend()
         }
+
+        val backCandidateImageView: ImageView = findViewById(R.id.backDetail)
+        backCandidateImageView.setOnClickListener {
+            val intent = Intent(this, CandidateActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     private fun fetchCandidateDetails() {
@@ -55,7 +68,6 @@ class DetailActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Handle error
             }
         })
     }
@@ -85,39 +97,34 @@ class DetailActivity : AppCompatActivity() {
                                         val newPosts = postsSnapshot.value as? Map<String, Any>
 
                                         if (existingPosts != null && newPosts != null) {
-                                            // Merge new posts with existing ones
                                             val mergedPosts = existingPosts.toMutableMap()
                                             mergedPosts.putAll(newPosts)
-
-                                            // Update FriendsPosts with merged posts
                                             currentUserFriendsRef.setValue(mergedPosts)
                                                 .addOnSuccessListener {
-                                                    Toast.makeText(this@DetailActivity, "Friend's posts added successfully", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this@DetailActivity, "Friend Added", Toast.LENGTH_SHORT).show()
                                                 }
                                                 .addOnFailureListener { e ->
-                                                    Toast.makeText(this@DetailActivity, "Failed to add friend's posts: ${e.message}", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this@DetailActivity, "Failed to add friend: ${e.message}", Toast.LENGTH_SHORT).show()
                                                 }
                                         } else if (newPosts != null) {
-                                            // If no existing posts, directly set new posts
                                             currentUserFriendsRef.setValue(newPosts)
                                                 .addOnSuccessListener {
-                                                    Toast.makeText(this@DetailActivity, "Friend's posts added successfully", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this@DetailActivity, "Friend Added", Toast.LENGTH_SHORT).show()
                                                 }
                                                 .addOnFailureListener { e ->
-                                                    Toast.makeText(this@DetailActivity, "Failed to add friend's posts: ${e.message}", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this@DetailActivity, "Failed to add friend: ${e.message}", Toast.LENGTH_SHORT).show()
                                                 }
                                         }
                                     }
 
                                     override fun onCancelled(databaseError: DatabaseError) {
-                                        // Handle error
                                         Toast.makeText(this@DetailActivity, "Failed to fetch existing posts: ${databaseError.message}", Toast.LENGTH_SHORT).show()
                                     }
                                 })
+
                             }
 
                             override fun onCancelled(databaseError: DatabaseError) {
-                                // Handle error
                                 Toast.makeText(this@DetailActivity, "Failed to fetch friend's posts: ${databaseError.message}", Toast.LENGTH_SHORT).show()
                             }
                         })
@@ -125,7 +132,6 @@ class DetailActivity : AppCompatActivity() {
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    // Handle error
                     Toast.makeText(this@DetailActivity, "Failed to fetch user details: ${databaseError.message}", Toast.LENGTH_SHORT).show()
                 }
             })
