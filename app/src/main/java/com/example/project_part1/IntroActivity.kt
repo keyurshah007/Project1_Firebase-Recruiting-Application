@@ -11,7 +11,7 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@IntroActivity, MainActivity::class.java))
+            startActivity(Intent(this@IntroActivity, Login::class.java))
             finish()
         }, SPLASH_TIME_OUT.toLong())
     }
