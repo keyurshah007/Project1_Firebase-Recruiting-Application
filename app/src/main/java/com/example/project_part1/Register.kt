@@ -51,6 +51,16 @@ class Register : AppCompatActivity() {
         val password = inputPassword.text.toString().trim()
         val number = inputNumber.text.toString().trim()
 
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || number.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (selectedImageUri == null) {
+            Toast.makeText(this, "Please upload a photo.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -63,6 +73,7 @@ class Register : AppCompatActivity() {
                 }
             }
     }
+
 
     private fun uploadImageToStorage(userId: String?, userData: Candidates) {
         selectedImageUri?.let { imageUri ->
@@ -97,7 +108,8 @@ class Register : AppCompatActivity() {
             val database = FirebaseDatabase.getInstance()
             val usersRef = database.getReference("Candidates")
 
-            // Store user data in the Realtime Database
+
+
             usersRef.child(it).setValue(userData)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -107,6 +119,8 @@ class Register : AppCompatActivity() {
                         Toast.makeText(this, "Failed to save user data.", Toast.LENGTH_SHORT).show()
                     }
                 }
+
+
         }
     }
 
